@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/question_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hey Tom!\nHow are you feeling today?"
+        android:textAlignment="center"
+        android:textSize="35dp"
+        android:gravity="center_vertical"
+        android:textColor="#fff"
+        android:background="@drawable/questionback"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="61dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    
+    <!--<Button-->
+        <!--android:id="@+id/answer1_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignTop="@+id/answer2_button"-->
+        <!--android:layout_toLeftOf="@+id/answer2_button"-->
+        <!--android:layout_toStartOf="@+id/answer2_button"-->
+        <!--android:text="Good"/>-->
+
+    <!--<Button-->
+        <!--android:id="@+id/answer2_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignTop="@+id/answer3_button"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:text="Okay"/>-->
+
+    <!--<Button-->
+        <!--android:id="@+id/answer3_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_marginRight="40dp"-->
+        <!--android:layout_marginEnd="40dp"-->
+        <!--android:layout_marginBottom="153dp"-->
+        <!--android:text="Bad"/>-->
+
+    <at.markushi.ui.CircleButton
+        android:id="@+id/circleButton1"
+        android:layout_width="64dip"
+        android:layout_height="64dip"
+        android:src="@drawable/button_good"
+        app:cb_color="#99CC00"
+        app:cb_pressedRingWidth="8dip"
+        android:layout_below="@+id/question_textview"
+        android:layout_alignLeft="@+id/question_textview"
+        android:layout_alignStart="@+id/question_textview"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="90dp" />
+
+    <at.markushi.ui.CircleButton
+        android:id="@+id/circleButton2"
+        android:layout_width="64dip"
+        android:layout_height="64dip"
+        android:src="@drawable/button_okay"
+        app:cb_color="#99CC00"
+        app:cb_pressedRingWidth="8dip"
+        android:layout_alignTop="@+id/circleButton1"
+        android:layout_centerHorizontal="true" />
+
+    <at.markushi.ui.CircleButton
+        android:id="@+id/circleButton3"
+        android:layout_width="64dip"
+        android:layout_height="64dip"
+        android:src="@drawable/button_bad"
+        app:cb_color="#99CC00"
+        app:cb_pressedRingWidth="8dip"
+        android:layout_alignTop="@+id/circleButton1"
+        android:layout_alignRight="@+id/question_textview"
+        android:layout_alignEnd="@+id/question_textview"
+        android:layout_marginRight="48dp"
+        android:layout_marginEnd="48dp" />
+
+
+</RelativeLayout>

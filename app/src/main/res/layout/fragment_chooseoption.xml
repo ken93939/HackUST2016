@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/chooseoption_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Let's make it more interesting"
+        android:textAlignment="center"
+        android:textSize="35dp"
+        android:gravity="center_vertical"
+        android:textColor="#fff"
+        android:background="@drawable/questionback"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="21dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/chooseoption_button1"
+
+        android:text="Button"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+
+        android:layout_marginTop="10dp"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/chooseoption_question"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
+    <Button
+        android:id="@+id/chooseoption_button2"
+
+        android:text="Button"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/chooseoption_button1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
+    <Button
+        android:id="@+id/chooseoption_button3"
+
+        android:text="Button"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/chooseoption_button2"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+    <Button
+        android:id="@+id/chooseoption_button4"
+
+        android:text="Button"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/chooseoption_button3"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+    <Button
+        android:id="@+id/chooseoption_button5"
+
+        android:text="Button"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/chooseoption_button4"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
+
+</RelativeLayout>
