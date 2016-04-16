@@ -9,6 +9,7 @@ public class activity extends Model{
     private String name;
     private String nature;
 
+
     public void setName(String name){
         this.name=name;
     }

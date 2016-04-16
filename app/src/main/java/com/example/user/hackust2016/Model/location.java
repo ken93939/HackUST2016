@@ -1,6 +1,5 @@
 package com.example.user.hackust2016.Model;
 
-//import com.google.android.maps.GeoPoint;
 import com.strongloop.android.loopback.Model;
 import com.google.android.*;
 
@@ -10,17 +9,28 @@ import java.util.Date;
  * Created by User on 4/16/2016.
  */
 public class location extends Model{
-//    private GeoPoint gp;
     private boolean active;
     private Date time;
+    private double longitude;
+    private double latitude;
 
-//    public GeoPoint getGp() {
-//        return gp;
-//    }
-//
-//    public void setGp(GeoPoint gp) {
-//        this.gp = gp;
-//    }
+
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
 
     public boolean isActive() {
         return active;
