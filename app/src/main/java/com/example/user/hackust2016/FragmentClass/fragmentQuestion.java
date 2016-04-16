@@ -1,6 +1,7 @@
 package com.example.user.hackust2016.FragmentClass;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -28,6 +29,11 @@ public class fragmentQuestion extends Fragment {
             @Override
             public void onClick(View v) {
                 value = 1;
+                fragmentChooseOption fCO = new fragmentChooseOption();
+                fCO.setValue(value);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.match_container, fCO);
+                transaction.commit();
             }
         });
 
@@ -35,6 +41,11 @@ public class fragmentQuestion extends Fragment {
             @Override
             public void onClick(View v) {
                 value = 2;
+                fragmentChooseOption fCO = new fragmentChooseOption();
+                fCO.setValue(value);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.match_container, fCO);
+                transaction.commit();
             }
         });
 
@@ -42,6 +53,11 @@ public class fragmentQuestion extends Fragment {
             @Override
             public void onClick(View v) {
                 value = 3;
+                fragmentChooseOption fCO = new fragmentChooseOption();
+                fCO.setValue(value);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.match_container, fCO);
+                transaction.commit();
             }
         });
         return v;
