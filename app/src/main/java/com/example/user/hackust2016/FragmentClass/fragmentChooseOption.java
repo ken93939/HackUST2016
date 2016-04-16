@@ -1,9 +1,9 @@
 package com.example.user.hackust2016.FragmentClass;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +17,7 @@ import com.example.user.hackust2016.R;
  */
 public class fragmentChooseOption extends Fragment {
     int value;
+    String question, but1, but2, but3, but4, but5;
     String LOG_TAG = fragmentChooseOption.class.getSimpleName();
 
     public fragmentChooseOption() {
@@ -33,7 +34,6 @@ public class fragmentChooseOption extends Fragment {
         return v;
     }
     private void setText(View v){
-        String question, but1, but2, but3, but4, but5;
         if(value == 1){
             question = "Let's make it more interesting";
             but1 = "Hiking";
@@ -80,8 +80,53 @@ public class fragmentChooseOption extends Fragment {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v(LOG_TAG, "Hello");
+                MatchingFragment mF = new MatchingFragment();
+                mF.setOption(but1);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.match_container, mF);
+                transaction.commit();
             }
         });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MatchingFragment mF = new MatchingFragment();
+                mF.setOption(but2);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.match_container, mF);
+                transaction.commit();
+            }
+        });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MatchingFragment mF = new MatchingFragment();
+                mF.setOption(but3);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.match_container, mF);
+                transaction.commit();
+            }
+        });
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MatchingFragment mF = new MatchingFragment();
+                mF.setOption(but4);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.match_container, mF);
+                transaction.commit();
+            }
+        });
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MatchingFragment mF = new MatchingFragment();
+                mF.setOption(but5);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.match_container, mF);
+                transaction.commit();
+            }
+        });
+
     }
 }

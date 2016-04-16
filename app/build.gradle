@@ -30,4 +30,5 @@ dependencies {
     compile 'com.github.markushi:circlebutton:1.1'
     compile 'com.strongloop:loopback-sdk-android:1.5.+'
     compile 'com.google.android.gms:play-services:7.3.0'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.+'
 }
