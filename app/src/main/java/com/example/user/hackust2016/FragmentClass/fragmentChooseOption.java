@@ -1,7 +1,6 @@
 package com.example.user.hackust2016.FragmentClass;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,7 +23,7 @@ import com.strongloop.android.loopback.callbacks.VoidCallback;
 public class fragmentChooseOption extends Fragment {
     int value;
     private RestAdapter restAdapter;
-    String question, but1, but2, but3, but4, but5;
+    String question, but1, but2, but3, but4, but5, option;
     String LOG_TAG = fragmentChooseOption.class.getSimpleName();
 
     public fragmentChooseOption() {
@@ -92,6 +91,7 @@ public class fragmentChooseOption extends Fragment {
 //                FragmentTransaction transaction = getFragmentManager().beginTransaction();
 //                transaction.replace(R.id.match_container, mF);
 //                transaction.commit();
+                option = but1;
                 addActivity();
             }
         });
@@ -103,6 +103,7 @@ public class fragmentChooseOption extends Fragment {
 //                FragmentTransaction transaction = getFragmentManager().beginTransaction();
 //                transaction.replace(R.id.match_container, mF);
 //                transaction.commit();
+                option = but2;
                 addActivity();
             }
         });
@@ -114,6 +115,7 @@ public class fragmentChooseOption extends Fragment {
 //                FragmentTransaction transaction = getFragmentManager().beginTransaction();
 //                transaction.replace(R.id.match_container, mF);
 //                transaction.commit();
+                option = but3;
                 addActivity();
             }
         });
@@ -125,6 +127,7 @@ public class fragmentChooseOption extends Fragment {
 //                FragmentTransaction transaction = getFragmentManager().beginTransaction();
 //                transaction.replace(R.id.match_container, mF);
 //                transaction.commit();
+                option = but4;
                 addActivity();
             }
         });
@@ -136,6 +139,7 @@ public class fragmentChooseOption extends Fragment {
 //                FragmentTransaction transaction = getFragmentManager().beginTransaction();
 //                transaction.replace(R.id.match_container, mF);
 //                transaction.commit();
+                option = but5;
                 addActivity();
             }
         });
@@ -145,12 +149,11 @@ public class fragmentChooseOption extends Fragment {
     private void addActivity(){
         restAdapter=new RestAdapter(getActivity().getApplicationContext(), Constants.serverIp);
         activityRepository activityRepository=restAdapter.createRepository(com.example.user.hackust2016.repository.activityRepository.class);
-        activityRepository.addActivity("Movie", "up", new VoidCallback() {
+        activityRepository.addActivity(option, "up", new VoidCallback() {
             @Override
             public void onSuccess() {
                 Log.i(LOG_TAG, "success");
                 MatchingFragment mF = new MatchingFragment();
-                mF.setOption(but5);
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.match_container, mF);
                 transaction.commit();
