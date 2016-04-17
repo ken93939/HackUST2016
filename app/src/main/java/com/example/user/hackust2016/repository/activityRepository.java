@@ -66,6 +66,7 @@ public class activityRepository extends ModelRepository<activity> {
                     for(int i=0;i<data.length();i++){
                         JSONObject json= data.getJSONObject(i);
                         matchreturned matchreturned= new matchreturned(json.getString("username"),json.getString("picture"));
+                        Log.i(TAG,matchreturned.getUsername());
                         matchreturnedList.add(matchreturned);
                     }
                     callback.onSuccess(matchreturnedList);
@@ -78,6 +79,7 @@ public class activityRepository extends ModelRepository<activity> {
 
             @Override
             public void onError(Throwable t) {
+                Log.i(TAG,t.getLocalizedMessage());
                 callback.onError(t);
             }
         });

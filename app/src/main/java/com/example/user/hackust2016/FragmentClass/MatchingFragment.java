@@ -1,6 +1,7 @@
 package com.example.user.hackust2016.FragmentClass;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -14,7 +15,9 @@ import com.example.user.hackust2016.matchreturned;
 import com.example.user.hackust2016.repository.activityRepository;
 import com.strongloop.android.loopback.RestAdapter;
 import com.strongloop.android.loopback.callbacks.ListCallback;
+import com.strongloop.android.loopback.callbacks.VoidCallback;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,6 +39,7 @@ public class MatchingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_matching, container, false);
+
         return v;
     }
 
@@ -44,18 +48,25 @@ public class MatchingFragment extends Fragment {
         super.onCreate(savedInstanceState);
         adapter=new RestAdapter(getActivity().getApplicationContext(),Constants.serverIp);
         possibleMatch();
-
     }
     private void possibleMatch(){
         activityRepository activityRepository= adapter.createRepository(com.example.user.hackust2016.repository.activityRepository.class);
         activityRepository.possibleMatch("Movie", new ListCallback() {
             @Override
             public void onSuccess(List objects) {
+                ArrayList<matchreturned> newlist=new ArrayList<matchreturned>();
                 Log.i(TAG, "possiblematchsuccess");
                 for (Object obj : objects) {
                     matchreturned match = (matchreturned) obj;
                     Log.i(TAG, "" + match.getUsername() + match.getPicture());
+                    matchreturned realMatch=new matchreturned(match.getUsername(),match.getPicture());
+                    newlist.add(realMatch);
                 }
+                MatchResultFragment result=new MatchResultFragment();
+                result.setList(newlist);
+                FragmentTransaction transaction=getActivity().getFragmentManager().beginTransaction()
+                        .replace(R.id.match_container,result);
+                transaction.commit();
             }
 
             @Override
