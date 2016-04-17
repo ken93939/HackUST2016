@@ -1,7 +1,6 @@
 package com.example.user.hackust2016.FragmentClass;
 
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -15,7 +14,6 @@ import com.example.user.hackust2016.matchreturned;
 import com.example.user.hackust2016.repository.activityRepository;
 import com.strongloop.android.loopback.RestAdapter;
 import com.strongloop.android.loopback.callbacks.ListCallback;
-import com.strongloop.android.loopback.callbacks.VoidCallback;
 
 import java.util.List;
 
@@ -38,11 +36,6 @@ public class MatchingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_matching, container, false);
-
-        MatchResultFragment mRF = new MatchResultFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.match_container, mRF);
-        transaction.commit();
         return v;
     }
 
