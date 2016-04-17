@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +18,21 @@ import com.example.user.hackust2016.R;
 import com.example.user.hackust2016.matchreturned;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Sam-PC on 17/4/2016.
  */
 public class MatchResultFragment extends Fragment {
+    private ArrayList<matchreturned> list;
+    private String TAG=MatchingFragment.class.getCanonicalName();
     public MatchResultFragment() {
 
+    }
+
+    public void setList(ArrayList<matchreturned> list) {
+        this.list = list;
+        Log.i(TAG," "+list.size() );
     }
 
     @Nullable
@@ -40,19 +49,19 @@ public class MatchResultFragment extends Fragment {
 
         ListView listView = (ListView) v.findViewById(R.id.listView);
 
-        matchreturned match_data[] = new matchreturned[]
-                {
-                        new matchreturned("A", "usericon"),
-                        new matchreturned("B", "usericon"),
-                        new matchreturned("C", "usericon"),
-                        new matchreturned("D", "usericon"),
-                };
+//        matchreturned match_data[] = new matchreturned[]
+//                {
+//                        new matchreturned("A", "usericon"),
+//                        new matchreturned("B", "usericon"),
+//                        new matchreturned("C", "usericon"),
+//                        new matchreturned("D", "usericon"),
+//                };
 
-        final ArrayList<matchreturned> list = new ArrayList<matchreturned>();
-        for (int i = 0; i < match_data.length; ++i) {
-            list.add(match_data[i]);
-        }
-
+//        final ArrayList<matchreturned> list = new ArrayList<matchreturned>();
+//        for (int i = 0; i < match_data.length; ++i) {
+//            list.add(match_data[i]);
+//        }
+        Log.d(TAG, "fuck");
         MatchResultAdapter madapter = new MatchResultAdapter(getActivity(),
                 R.layout.match_list_item, list);
 
