@@ -39,8 +39,8 @@ public class activityRepository extends ModelRepository<activity> {
         return contract;
     }
 
-    public void addLocation(String name, String nature, final VoidCallback callback){
-        invokeStaticMethod("addLocation", ImmutableMap.of("name", name, "nature", nature), new Adapter.Callback() {
+    public void addActivity(String name, String nature, final VoidCallback callback){
+        invokeStaticMethod("addActivity", ImmutableMap.of("name", name, "nature", nature), new Adapter.Callback() {
             @Override
             public void onSuccess(String response) {
                 callback.onSuccess();
