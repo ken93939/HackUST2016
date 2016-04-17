@@ -17,6 +17,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.user.hackust2016.Model.activity;
@@ -55,7 +57,8 @@ public class Welcome extends AppCompatActivity implements ActivityCompat.OnReque
     private GoogleApiClient googleApiClient;
     private Location mLastLocation;
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-
+    private ImageButton fb;
+    private ImageButton google;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +66,24 @@ public class Welcome extends AppCompatActivity implements ActivityCompat.OnReque
         setContentView(R.layout.activity_welcome);
         page = 0;
         adapter = new RestAdapter(getApplicationContext(), Constants.serverIp);
-
+        fb= (ImageButton) findViewById(R.id.fb_button);
+        google= (ImageButton) findViewById(R.id.google_button);
+        fb.setClickable(false);
+        fb.setEnabled(false);
+        google.setEnabled(false);
+        google.setClickable(false);
+        fb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login();
+            }
+        });
+        google.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login();
+            }
+        });
 //        activityRepository repository = adapter.createRepository(activityRepository.class);
 //        activity activity = repository.createObject(ImmutableMap.of("name","activity"));
 //        activity.setName("basketball");
@@ -142,6 +162,24 @@ public class Welcome extends AppCompatActivity implements ActivityCompat.OnReque
         googleApiClient.disconnect();
         super.onStop();
     }
+    private void login(){
+        memberRepository memberRepository= adapter.createRepository(com.example.user.hackust2016.repository.memberRepository.class);
+        memberRepository.loginUser("d@d.com", "123456", new UserRepository.LoginCallback<member>() {
+            @Override
+            public void onSuccess(AccessToken token, member currentUser) {
+                Log.i(TAG, "login successful");
+                submitLocation(mLastLocation);
+                Intent intent= new Intent(Welcome.this,MatchActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                Log.i(TAG,"failed"+t.getLocalizedMessage());
+            }
+        });
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -209,23 +247,11 @@ public class Welcome extends AppCompatActivity implements ActivityCompat.OnReque
         }
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
         if (mLastLocation != null) {
-            Log.i(TAG,""+mLastLocation.getLatitude()+mLastLocation.getLongitude());
-            memberRepository memberRepository= adapter.createRepository(com.example.user.hackust2016.repository.memberRepository.class);
-            memberRepository.loginUser("d@d.com", "123456", new UserRepository.LoginCallback<member>() {
-                @Override
-                public void onSuccess(AccessToken token, member currentUser) {
-                    Log.i(TAG, "login successful");
-                    submitLocation(mLastLocation);
-                    Intent intent= new Intent(Welcome.this,MatchActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-
-                @Override
-                public void onError(Throwable t) {
-                    Log.i(TAG,"failed"+t.getLocalizedMessage());
-                }
-            });
+            Log.i(TAG, "" + mLastLocation.getLatitude() + mLastLocation.getLongitude());
+            fb.setClickable(true);
+            fb.setEnabled(true);
+            google.setClickable(true);
+            google.setEnabled(true);
         }
         else{
             Log.i(TAG,"WTF");
