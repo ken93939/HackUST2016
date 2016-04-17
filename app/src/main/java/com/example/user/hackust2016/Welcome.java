@@ -2,6 +2,7 @@ package com.example.user.hackust2016;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -28,7 +29,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.google.android.gms.iid.InstanceID;
+//import com.google.android.gms.iid.InstanceID;
 import com.google.android.gms.location.LocationServices;
 import com.google.common.collect.ImmutableBiMap;
 import com.google.common.collect.ImmutableMap;
@@ -210,12 +211,14 @@ public class Welcome extends AppCompatActivity implements ActivityCompat.OnReque
         if (mLastLocation != null) {
             Log.i(TAG,""+mLastLocation.getLatitude()+mLastLocation.getLongitude());
             memberRepository memberRepository= adapter.createRepository(com.example.user.hackust2016.repository.memberRepository.class);
-            memberRepository.loginUser("f@f.com", "123456", new UserRepository.LoginCallback<member>() {
+            memberRepository.loginUser("d@d.com", "123456", new UserRepository.LoginCallback<member>() {
                 @Override
                 public void onSuccess(AccessToken token, member currentUser) {
-                    Log.i(TAG,"login successful");
+                    Log.i(TAG, "login successful");
                     submitLocation(mLastLocation);
-                    possibleMatch();
+                    Intent intent= new Intent(Welcome.this,MatchActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
 
                 @Override
@@ -286,13 +289,14 @@ public class Welcome extends AppCompatActivity implements ActivityCompat.OnReque
 
         @Override
         protected String doInBackground(Void... params) {
-            InstanceID instanceID= InstanceID.getInstance(Welcome.this);
-            String authorizedEntity ="213242149938";
-            try {
-                String token= instanceID.getToken(authorizedEntity, GoogleCloudMessaging.INSTANCE_ID_SCOPE,null);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+//            InstanceID instanceID= InstanceID.getInstance(Welcome.this);
+//            String authorizedEntity ="213242149938";
+//            try {
+//                String token= instanceID.getToken(authorizedEntity, GoogleCloudMessaging.INSTANCE_ID_SCOPE,null);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            return null;
             return null;
         }
 

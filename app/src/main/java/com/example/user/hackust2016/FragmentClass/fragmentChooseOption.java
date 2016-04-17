@@ -1,22 +1,29 @@
 package com.example.user.hackust2016.FragmentClass;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.user.hackust2016.Constants;
 import com.example.user.hackust2016.R;
+import com.example.user.hackust2016.repository.activityRepository;
+import com.strongloop.android.loopback.RestAdapter;
+import com.strongloop.android.loopback.callbacks.VoidCallback;
 
 /**
  * Created by loyuman on 16/4/2016.
  */
 public class fragmentChooseOption extends Fragment {
     int value;
+    private RestAdapter restAdapter;
     String question, but1, but2, but3, but4, but5;
     String LOG_TAG = fragmentChooseOption.class.getSimpleName();
 
@@ -80,53 +87,79 @@ public class fragmentChooseOption extends Fragment {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MatchingFragment mF = new MatchingFragment();
-                mF.setOption(but1);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.match_container, mF);
-                transaction.commit();
+//                MatchingFragment mF = new MatchingFragment();
+//                mF.setOption(but1);
+//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.match_container, mF);
+//                transaction.commit();
+                addActivity();
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MatchingFragment mF = new MatchingFragment();
-                mF.setOption(but2);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.match_container, mF);
-                transaction.commit();
+//                MatchingFragment mF = new MatchingFragment();
+//                mF.setOption(but2);
+//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.match_container, mF);
+//                transaction.commit();
+                addActivity();
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MatchingFragment mF = new MatchingFragment();
-                mF.setOption(but3);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.match_container, mF);
-                transaction.commit();
+//                MatchingFragment mF = new MatchingFragment();
+//                mF.setOption(but3);
+//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.match_container, mF);
+//                transaction.commit();
+                addActivity();
             }
         });
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MatchingFragment mF = new MatchingFragment();
-                mF.setOption(but4);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.match_container, mF);
-                transaction.commit();
+//                MatchingFragment mF = new MatchingFragment();
+//                mF.setOption(but4);
+//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.match_container, mF);
+//                transaction.commit();
+                addActivity();
             }
         });
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                MatchingFragment mF = new MatchingFragment();
+//                mF.setOption(but5);
+//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.match_container, mF);
+//                transaction.commit();
+                addActivity();
+            }
+        });
+
+    }
+
+    private void addActivity(){
+        restAdapter=new RestAdapter(getActivity().getApplicationContext(), Constants.serverIp);
+        activityRepository activityRepository=restAdapter.createRepository(com.example.user.hackust2016.repository.activityRepository.class);
+        activityRepository.addActivity("Movie", "up", new VoidCallback() {
+            @Override
+            public void onSuccess() {
+                Log.i(LOG_TAG, "success");
                 MatchingFragment mF = new MatchingFragment();
                 mF.setOption(but5);
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.match_container, mF);
                 transaction.commit();
             }
-        });
 
+            @Override
+            public void onError(Throwable t) {
+                Log.i(LOG_TAG,t.getLocalizedMessage());
+            }
+        });
     }
 }
